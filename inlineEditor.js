@@ -1,4 +1,5 @@
 'use strict';
+const axios = require('axios');
  
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
@@ -38,7 +39,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     let intentMap = new Map();
     intentMap.set('Default Welcome Intent', welcome);
     intentMap.set('Default Fallback Intent', fallback);
-    // intentMap.set('your intent name here', yourFunctionHandler);
-    // intentMap.set('your intent name here', googleAssistantHandler);
+    intentMap.set('showAllAvailable', showAllAvailable);
     agent.handleRequest(intentMap);
 });
